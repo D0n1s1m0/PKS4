@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Главная";
+}
+@model List<WorkOrder>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number">@ViewBag.TotalProducts</div>
+        <div>Продуктов</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">@ViewBag.ActiveLines</div>
+        <div>Активных линий</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">@ViewBag.PendingOrders</div>
+        <div>Заказов в ожидании</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">@ViewBag.TotalMaterials</div>
+        <div>Единиц материалов</div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Последние заказы</h2>
+    <table>
+        <thead>
+            <tr><th>№</th><th>Продукт</th><th>Количество</th><th>Статус</th><th>Дата завершения</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Product?.Name</td>
+                    <td>@order.Quantity</td>
+                    <td class="status-@order.Status.ToLower()">@order.Status</td>
+                    <td>@order.EstimatedEndDate.ToString("dd.MM.yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

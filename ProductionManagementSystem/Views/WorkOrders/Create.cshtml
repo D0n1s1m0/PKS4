@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Создание заказа";
+}
+
+<h1 style="color: #2c3e50;">Создание заказа</h1>
+
+<a href="/WorkOrders" style="display: inline-block; background: #6c757d; color: white; padding: 8px 12px; text-decoration: none; border-radius: 5px; margin-bottom: 20px;">← Назад</a>
+
+@if (TempData["Error"] != null)
+{
+    <div style="background: #f8d7da; color: #721c24; padding: 10px; border-radius: 5px; margin-bottom: 15px;">@TempData["Error"]</div>
+}
+
+<form method="post" style="background: white; padding: 20px; border-radius: 8px;">
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Продукт:</label>
+        <select name="productId" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+            <option value="">Выберите продукт</option>
+            @foreach (var product in ViewBag.Products)
+            {
+                <option value="@product.Id">@product.Name</option>
+            }
+        </select>
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Количество:</label>
+        <input type="number" name="quantity" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required />
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Производственная линия (необязательно):</label>
+        <select name="productionLineId" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            <option value="">Не выбрана</option>
+            @foreach (var line in ViewBag.Lines)
+            {
+                <option value="@line.Id">@line.Name</option>
+            }
+        </select>
+    </div>
+    
+    <button type="submit" style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Создать</button>
+</form>

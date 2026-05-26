@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Производственные линии";
+}
+@model List<ProductionLine>
+
+<div class="card">
+    <h2>Производственные линии</h2>
+    <div class="stats-grid">
+        @foreach (var line in Model)
+        {
+            <div class="stat-card @(line.Status == "Active" ? "line-active" : "line-stopped")">
+                <h3>@line.Name</h3>
+                <p>Статус: <strong>@line.Status</strong></p>
+                <p>Эффективность: @line.EfficiencyFactor</p>
+                <p>Текущий заказ: @(line.CurrentWorkOrder?.Product?.Name ?? "Нет")</p>
+                <form method="post" asp-action="ToggleStatus" style="display:inline">
+                    <input type="hidden" name="id" value="@line.Id" />
+                    <button type="submit" class="btn @(line.Status == "Active" ? "btn-danger" : "btn-success")">
+                        @(line.Status == "Active" ? "Остановить" : "Запустить")
+                    </button>
+                </form>
+                <form method="post" asp-action="UpdateEfficiency" style="display:inline; margin-left:10px">
+                    <input type="hidden" name="id" value="@line.Id" />
+                    <input type="number" name="factor" step="0.1" min="0.5" max="2.0" value="@line.EfficiencyFactor" style="width:60px" />
+                    <button type="submit" class="btn btn-primary">Изменить</button>
+                </form>
+            </div>
+        }
+    </div>
+</div>

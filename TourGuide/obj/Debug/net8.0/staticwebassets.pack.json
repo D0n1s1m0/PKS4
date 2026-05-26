@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Asus\\Documents\\pks4\\TourGuide\\wwwroot\\images\\attractions\\hermitage.jpg",
+      "PackagePath": "staticwebassets\\images\\attractions\\hermitage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Documents\\pks4\\TourGuide\\wwwroot\\images\\attractions\\kazan_kremlin.jpg",
+      "PackagePath": "staticwebassets\\images\\attractions\\kazan_kremlin.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Documents\\pks4\\TourGuide\\wwwroot\\images\\attractions\\kremlin.jpg",
+      "PackagePath": "staticwebassets\\images\\attractions\\kremlin.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Documents\\pks4\\TourGuide\\wwwroot\\images\\attractions\\peterpaul.jpg",
+      "PackagePath": "staticwebassets\\images\\attractions\\peterpaul.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Documents\\pks4\\TourGuide\\wwwroot\\images\\attractions\\red_square.jpg",
+      "PackagePath": "staticwebassets\\images\\attractions\\red_square.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Documents\\pks4\\TourGuide\\wwwroot\\images\\attractions\\zoo.jpg",
+      "PackagePath": "staticwebassets\\images\\attractions\\zoo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Documents\\pks4\\TourGuide\\wwwroot\\images\\cities\\kazan.jpg",
+      "PackagePath": "staticwebassets\\images\\cities\\kazan.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Documents\\pks4\\TourGuide\\wwwroot\\images\\cities\\moscow.jpg",
+      "PackagePath": "staticwebassets\\images\\cities\\moscow.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Documents\\pks4\\TourGuide\\wwwroot\\images\\cities\\novosibirsk.jpg",
+      "PackagePath": "staticwebassets\\images\\cities\\novosibirsk.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Documents\\pks4\\TourGuide\\wwwroot\\images\\cities\\spb.jpg",
+      "PackagePath": "staticwebassets\\images\\cities\\spb.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TourGuide.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TourGuide.props",
+      "PackagePath": "build\\TourGuide.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TourGuide.props",
+      "PackagePath": "buildMultiTargeting\\TourGuide.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TourGuide.props",
+      "PackagePath": "buildTransitive\\TourGuide.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "noV08js5x2YlalkPHmcwd0kf/CKueZmkhK8767kQmuM=",
+  "Source": "ProductionManagementSystem",
+  "BasePath": "_content/ProductionManagementSystem",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ProductionManagementSystem\\wwwroot",
+      "Source": "ProductionManagementSystem",
+      "ContentRoot": "C:\\Users\\Asus\\Documents\\pks4\\ProductionManagementSystem\\wwwroot\\",
+      "BasePath": "_content/ProductionManagementSystem",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

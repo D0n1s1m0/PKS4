@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Создание продукта";
+}
+@model ProductMaterialsViewModel
+
+<div class="card">
+    <h2>Создание продукта</h2>
+    
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert-error" style="background: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 15px; border-radius: 4px;">
+            @TempData["Error"]
+        </div>
+    }
+    
+    <form method="post" asp-action="Create">
+        <div style="margin-bottom: 1rem;">
+            <label>Название продукта *</label>
+            <input type="text" name="product.Name" class="form-control" required style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px;" />
+        </div>
+        
+        <div style="margin-bottom: 1rem;">
+            <label>Описание</label>
+            <textarea name="product.Description" class="form-control" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+        </div>
+        
+        <div style="margin-bottom: 1rem;">
+            <label>Категория *</label>
+            <select id="CategorySelect" name="product.Category" class="form-control" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px;" required>
+                <option value="">Выберите категорию</option>
+                @foreach (var cat in Model.Categories)
+                {
+                    <option value="@cat">@cat</option>
+                }
+            </select>
+        </div>
+        
+        <div id="newCategoryDiv" style="margin-bottom: 1rem; display: none;">
+            <label>Новая категория</label>
+            <input type="text" name="newCategory" class="form-control" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Введите название новой категории" />
+        </div>
+        
+        <div style="margin-bottom: 1rem;">
+            <label>Минимальный запас на складе</label>
+            <input type="number" name="product.MinimalStock" class="form-control" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px;" />
+        </div>
+        
+        <div style="margin-bottom: 1rem;">
+            <label>Время производства (мин/шт) *</label>
+            <input type="number" name="product.ProductionTimePerUnit" class="form-control" required style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px;" />
+        </div>
+        
+        <div style="margin-bottom: 1rem;">
+            <label>Необходимые материалы</label>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr style="background: #f8f9fa;">
+                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Материал</th>
+                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Необходимое количество</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.AvailableMaterials.Count; i++)
+                    {
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">
+                                <input type="hidden" name="materialIds" value="@Model.AvailableMaterials[i].Id" />
+                                @Model.AvailableMaterials[i].Name (@Model.AvailableMaterials[i].UnitOfMeasure)
+                            </td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">
+                                <input type="number" name="quantities" step="0.01" value="0" style="width: 100px; padding: 5px;" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin-right: 10px;">Создать</button>
+        <a href="/Products" class="btn" style="background: #6c757d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">Отмена</a>
+    </form>
+</div>
+
+<script>
+    document.getElementById('CategorySelect').addEventListener('change', function() {
+        var newCategoryDiv = document.getElementById('newCategoryDiv');
+        if (this.value === 'Другое') {
+            newCategoryDiv.style.display = 'block';
+        } else {
+            newCategoryDiv.style.display = 'none';
+        }
+    });
+</script>

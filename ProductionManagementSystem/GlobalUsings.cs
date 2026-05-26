@@ -1,0 +1,2 @@
+﻿global using ProductionManagementSystem.Models;
+global using ProductionManagementSystem.ViewModels;

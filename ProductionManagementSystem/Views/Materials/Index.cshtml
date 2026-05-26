@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Управление материалами";
+}
+@model List<Material>
+
+<div class="card">
+    <h2>Материалы</h2>
+    <table>
+        <thead>
+            <tr><th>Название</th><th>Количество</th><th>Ед.изм.</th><th>Мин.запас</th><th>Действия</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+            {
+                <tr class="@(m.Quantity < m.MinimalStock ? "low-stock" : "")">
+                    <td>@m.Name</td>
+                    <td>@m.Quantity @m.UnitOfMeasure</td>
+                    <td>@m.UnitOfMeasure</td>
+                    <td>@m.MinimalStock</td>
+                    <td>
+                        <form asp-action="Restock" method="post" style="display:inline">
+                            <input type="hidden" name="id" value="@m.Id" />
+                            <input type="number" name="amount" value="10" step="10" style="width:70px" />
+                            <button type="submit" class="btn btn-success">Пополнить</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="card">
+    <h3>Добавить материал</h3>
+    <form asp-action="Create" method="post">
+        <input type="text" name="Name" placeholder="Название" required />
+        <input type="number" name="Quantity" placeholder="Количество" step="0.01" required />
+        <input type="text" name="UnitOfMeasure" placeholder="Ед.изм." value="шт" />
+        <input type="number" name="MinimalStock" placeholder="Мин.запас" step="0.01" />
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+</div>

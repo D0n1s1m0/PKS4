@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Города России";
+}
+@model List<City>
+
+<h1 style="text-align: center; margin-bottom: 2rem;">Города России</h1>
+
+<div class="search-box">
+    <form method="get" style="display: flex; gap: 1rem;">
+        <input type="text" name="search" class="search-input" placeholder="Поиск города..." value="@ViewBag.Search" />
+        <button type="submit" class="btn">Найти</button>
+        @if (!string.IsNullOrEmpty(ViewBag.Search))
+        {
+            <a href="/Cities" class="btn" style="background: #95a5a6;">Сбросить</a>
+        }
+    </form>
+</div>
+
+@if (!Model.Any())
+{
+    <div style="text-align: center; padding: 3rem;">
+        <h2>Города не найдены</h2>
+        <p>Попробуйте изменить поисковый запрос</p>
+    </div>
+}
+else
+{
+    <div class="cities-grid">
+        @foreach (var city in Model)
+        {
+            <div class="card">
+                <div class="card-img">
+                    @if (!string.IsNullOrEmpty(city.ImageUrl))
+                    {
+                        <img src="@city.ImageUrl" alt="@city.Name" style="width: 100%; height: 200px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'" />
+                    }
+                    else
+                    {
+                        <span>🏙 @city.Name</span>
+                    }
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">@city.Name</h3>
+                    <p class="card-text"><strong>Регион:</strong> @city.Region</p>
+                    <p class="card-text"><strong>Население:</strong> @city.Population.ToString("N0") чел.</p>
+                    <p class="card-text"><strong>Достопримечательностей:</strong> @(city.Attractions?.Count ?? 0)</p>
+                    <a href="/Cities/Details/@city.Id" class="btn">Подробнее</a>
+                </div>
+            </div>
+        }
+    </div>
+}
