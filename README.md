@@ -11,7 +11,9 @@ dotnet run
 ------------------------------------------------
 
 cd C:\Users\Asus\Documents\pks4\TourGuide
+
 dotnet run
+
 <img width="1259" height="800" alt="image" src="https://github.com/user-attachments/assets/a851bc51-63ef-4639-88d9-0bc31b7002dd" />
 <img width="1231" height="762" alt="image" src="https://github.com/user-attachments/assets/c4856fa0-3f7b-4667-967e-cd4df968c5be" />
 <img width="1227" height="786" alt="image" src="https://github.com/user-attachments/assets/2209bf7e-bc53-42a0-8dae-8d97262a276d" />
